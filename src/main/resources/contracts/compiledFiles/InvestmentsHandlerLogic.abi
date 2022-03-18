@@ -1,0 +1,1 @@
+[{"inputs":[{"internalType":"contract PowerPlant","name":"powerPlant","type":"address"},{"internalType":"enum PowerPlantLib.CampaignStatus","name":"status","type":"uint8"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"checkRequirementsToStartInvestment","outputs":[],"stateMutability":"view","type":"function"}]

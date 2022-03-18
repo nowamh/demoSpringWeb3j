@@ -1,0 +1,41 @@
+{
+  "name": "wattify_smart_contracts",
+  "version": "1.0.0",
+  "description": "Wattify smart contracts",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test",
+    "migrate:ganache": "rm -rf build && truffle migrate --reset --compile-all --network ganache",
+    "migrate:rinkeby": "rm -rf build && truffle migrate --reset --compile-all --network rinkeby",
+    "migrate:dev": "rm -rf build && truffle migrate --reset --compile-all --network dev",
+    "lint:sol": "solium -d .",
+    "lint:sol:fix": "solium -d . --fix",
+    "coverage": "solidity-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youkinetwork/wattify_smart_contracts.git"
+  },
+  "author": "nour mhamdi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youkinetwork/wattify_smart_contracts/issues"
+  },
+  "homepage": "https://github.com/youkinetwork/wattify_smart_contracts#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1",
+    "@truffle/hdwallet-provider": "^2.0.0",
+    "big-number": "^2.0.0",
+    "dotenv": "^10.0.0",
+    "truffle-contract-size": "^2.0.1",
+    "@youkinetwork/youki_identity_smart_contracts": "^1.0.6"
+  },
+  "devDependencies": {
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "eslint": "^8.6.0",
+    "ethlint": "^0.0.0"
+  }
+}
