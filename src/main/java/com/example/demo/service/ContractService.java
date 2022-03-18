@@ -4,6 +4,7 @@ import com.example.demo.model.InvestmentDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Address;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
+@Service
 public class ContractService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ContractService.class);
     private  InvestmentsHandler investmentHandler;
@@ -43,13 +44,14 @@ public class ContractService {
     Credentials credentials;
     private List<String> contracts = new ArrayList<>();
 
-    public ContractService(  Web3j web3j, ContractGasProvider contractGasProvider) {
+/*    public ContractService(  Web3j web3j, ContractGasProvider contractGasProvider) {
 
-    }
+    }*/
     @PostConstruct
     public void init() throws IOException, CipherException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
 
         this.contractGasProvider=contractGasProvider;
+        credentials = Credentials.create("0xe20C8dC707B046C36545Be123eBe0AdC83E91C28");
 
         this.investmentHandler = InvestmentsHandler.load(
                 "0x4e0D7170C4f357A3667c521C44D039fB9789a57b",
@@ -57,7 +59,6 @@ public class ContractService {
                 new RawTransactionManager(this.web3j, credentials),
                 this.contractGasProvider
         );
-        credentials = Credentials.create("0xe20C8dC707B046C36545Be123eBe0AdC83E91C28");
         LOGGER.info("Credentials created: address={}", credentials.getAddress());
         EthCoinbase coinbase = web3j.ethCoinbase().send();
         EthGetTransactionCount transactionCount = web3j.ethGetTransactionCount(coinbase.getAddress(), DefaultBlockParameterName.LATEST).send();
